@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Building;
 use Illuminate\Http\Request;
 
-class API_Controller extends Controller
+class BuildingController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $buildings = Building::all();
+        return response()->json($buildings);
     }
 
     /**
@@ -19,7 +21,9 @@ class API_Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(['name' => 'required|string']);
+        Building::create(['name' => $request->name]);
+        return redirect()->route('buildings.index')->with('success', 'Building added successfully!');
     }
 
     /**
