@@ -87,6 +87,22 @@ class LoggingCounterController extends Controller
             return response()->json(['error' => 'Failed to clear logs: ' . $e->getMessage()], 500);
         }
     }
+
+    public function deleteSpecificLog(Request $request, $id)
+    {
+        try {
+            // Find the log entry by its ID
+            $log = LoggingCounter::findOrFail($id);
+            
+            // Delete the log entry
+            $log->delete();
+            
+            return response()->json(['message' => 'Log entry deleted successfully.']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to delete log entry: ' . $e->getMessage()], 500);
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      */

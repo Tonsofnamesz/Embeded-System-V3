@@ -60,6 +60,7 @@ Route::post('/logging-counters/manual', [LoggingCounterController::class, 'logMa
 Route::post('/toilets/{toiletId}/log', [LoggingCounterController::class, 'logSpecificToilet']);
 Route::put('/toilets/{toiletId}/reset', [LoggingCounterController::class, 'resetUsageCount']); // Reset and log action
 Route::delete('/logging-counters/clear', [LoggingCounterController::class, 'clearAllLogs']); // Clear all logs
+Route::delete('/logging-counters/{id}', [LoggingCounterController::class, 'deleteSpecificLog']); // Delete a specific log
 
 // Login Route
 Route::post('/login', [LoginController::class, 'login']); // Login route
