@@ -13,7 +13,7 @@ class LoggingCounterController extends Controller
      */
     public function index()
     {
-        return LoggingCounter::with(['toilet', 'floor', 'building'])->get();
+        return LoggingCounter::with(['toilet', 'floor', 'building', 'gender'])->get();
     }
 
     public function logSpecificToilet(Request $request, $toiletId)
@@ -23,8 +23,9 @@ class LoggingCounterController extends Controller
         LoggingCounter::create([
             'toilet_id' => $toilet->id,
             'floor_id' => $toilet->floor_id,
-            'building_id' => optional($toilet->floor->building)->id, // Avoid null errors
+            'building_id' => optional($toilet->floor->building)->id,
             'usage_count' => $toilet->usage_count,
+            'gender_id' => $toilet->gender_id,
             'logged_at' => now(),
         ]);
     

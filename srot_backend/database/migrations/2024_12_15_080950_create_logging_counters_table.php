@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('floor_id');
             $table->unsignedBigInteger('building_id');
             $table->integer('usage_count');
-            $table->unsignedBigInteger('gender_id');
+            $table->unsignedBigInteger('gender_id')->nullable();
             $table->boolean('is_reset')->default(false);
             $table->timestamp('logged_at')->useCurrent();
             $table->timestamps();

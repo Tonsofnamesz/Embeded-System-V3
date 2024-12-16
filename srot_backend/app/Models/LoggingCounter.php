@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class LoggingCounter extends Model
 {
     use HasFactory;
-    protected $fillable = ['toilet_id', 'floor_id', 'building_id', 'usage_count', 'logged_at', 'is_reset'];
+    protected $fillable = ['toilet_id', 'floor_id', 'building_id', 'gender_id', 'usage_count', 'logged_at', 'is_reset'];
     
     // Relationship with Toilet
     public function toilet()
@@ -26,5 +26,11 @@ class LoggingCounter extends Model
     public function building()
     {
       return $this->belongsTo(Building::class, 'building_id');
+    }
+
+    // Relationship with Gender
+    public function gender()
+    {
+      return $this->belongsTo(Building::class, 'gender_id');
     }
 }
