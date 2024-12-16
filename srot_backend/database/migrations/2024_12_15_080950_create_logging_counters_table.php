@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('floor_id');
             $table->unsignedBigInteger('building_id');
             $table->integer('usage_count');
+            $table->unsignedBigInteger('gender_id');
             $table->boolean('is_reset')->default(false);
             $table->timestamp('logged_at')->useCurrent();
             $table->timestamps();
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->foreign('toilet_id')->references('id')->on('toilets')->onDelete('cascade');
             $table->foreign('floor_id')->references('id')->on('floors')->onDelete('cascade');
             $table->foreign('building_id')->references('id')->on('buildings')->onDelete('cascade');
+            $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade');
         });
     }
 
