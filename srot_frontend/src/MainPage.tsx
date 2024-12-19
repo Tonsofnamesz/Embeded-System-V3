@@ -3,7 +3,6 @@ import axios from 'axios';
 import './css/mainpage.css';
 import BuildingList from './components/BuildingList';
 import FloorList from './components/FloorList';
-import logoutLogo from './gallery/Logout.png';
 
 
 interface Toilet {
@@ -146,7 +145,6 @@ const MainPage: React.FC = () => {
                     
                     <div className="dropdown">
                         <img
-                            src={logoutLogo}
                             alt="Logo"
                             className="logo"
                             onClick={() => setDropdownOpen(!isDropdownOpen)}
@@ -204,7 +202,7 @@ const MainPage: React.FC = () => {
                                             {floor.toilets.map((toilet) => (
                                                 <div key={toilet.id} className="toilet-info">
                                                     <img
-                                                        src={require(`./gallery/${toilet.gender.label.toLowerCase()}.png`)}
+                                                        src={(`./gallery/${toilet.gender.label.toLowerCase()}.png`)}
                                                         alt={`${toilet.gender.label} icon`}
                                                         className="gender-icon"
                                                     />
