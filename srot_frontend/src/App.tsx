@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from './Login';
+import MainPage from './MainPage';
+import DataPage from './components/DataPage';
+import AboutUsPage from './AboutUs';
+import JanitorMainPage from './JanitorMainPage';
+import JanitorDataPage from './components/JanitorData';
+import JanitorAboutUsPage from './AboutUsJanitor';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+const App: React.FC = () => {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/admin0x0x0x0x" Component={MainPage} />
+                <Route path="/data" element={<DataPage />} />
+                <Route path="/about-us" element={<AboutUsPage />} />
+                <Route path="/janitor" element={<JanitorMainPage />} />
+                <Route path="/janitordata" element={<JanitorDataPage />} />
+                <Route path="/janitorabout-us" element={<JanitorAboutUsPage />} />
+            </Routes>
+        </Router>
+    );
+};
 
 export default App;
